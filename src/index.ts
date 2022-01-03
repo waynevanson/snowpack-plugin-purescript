@@ -218,6 +218,7 @@ export const purescriptPlugin: SnowpackPluginFactory<PurescriptPluginOptions> =
           )
         );
 
+        // todo - catch the bad stuff
         const main = pipe(
           program,
           TE.matchEW(T.fromIOK(Console.error), T.fromIOK(Console.log))
