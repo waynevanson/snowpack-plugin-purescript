@@ -191,11 +191,13 @@ export const purescriptPlugin: SnowpackPluginFactory<PurescriptPluginOptions> =
             pipe(snowpackConfig.mount, mounts({ filePath, root }), E.right)
           ),
           TE.fromEither,
-          TE.bindW("fileContents", () =>
-            fs.readFile({ encoding: "utf-8" })(filePath)
-          ),
-          TE.bindW("pursModuleName", ({ fileContents }) =>
-            TE.fromEitherK(pursModuleName)(fileContents)
+          TE.apSW(
+            "pursModuleName",
+            pipe(
+              filePath,
+              fs.readFile({ encoding: "utf-8" }),
+              TE.chainEitherKW(pursModuleName)
+            )
           ),
           TE.bindW("symlinks", ({ spagoOutputDir, mount, pursModuleName }) =>
             TE.right(
