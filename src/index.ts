@@ -1,18 +1,17 @@
 import {
+  console as Console,
   either as E,
   option as O,
   reader as R,
   readonlyArray as A,
   readonlyRecord as RC,
-  taskEither as TE,
-  console as Console,
   task as T,
+  taskEither as TE,
 } from "fp-ts";
 import { fs } from "fp-ts-node";
 import { Endomorphism } from "fp-ts/lib/Endomorphism";
 import { constVoid, pipe } from "fp-ts/lib/function";
 import { ReadonlyRecord } from "fp-ts/lib/ReadonlyRecord";
-import * as _fs from "fs";
 import * as path from "path";
 import {
   MountEntry,
@@ -20,23 +19,8 @@ import {
   SnowpackConfig,
   SnowpackPluginFactory,
 } from "snowpack";
-import {
-  deferred,
-  DeferredDeps,
-  deps,
-  pursFiles,
-  SpagoDeps,
-  spagoOutputDir,
-} from "./spago";
-import { isChildInParent } from "./utils";
-
-const symlink = TE.taskify<
-  _fs.PathLike,
-  _fs.PathLike,
-  _fs.symlink.Type | undefined | null,
-  NodeJS.ErrnoException,
-  void
->(_fs.symlink);
+import { deferred, DeferredDeps, deps, SpagoDeps } from "./spago";
+import { isChildInParent, symlink } from "./utils";
 
 export interface PurescriptPluginOptions {
   /** Path to spago project directory,

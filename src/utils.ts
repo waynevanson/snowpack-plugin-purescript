@@ -3,10 +3,11 @@
  * Super niche fp utils.
  */
 import { commandSync as execaCommandSync, SyncOptions } from "execa";
-import { either as E, ioEither as IOE } from "fp-ts";
+import { either as E, ioEither as IOE, taskEither as TE } from "fp-ts";
+import * as _fs from "fs";
 import { IOptions, sync as globSync } from "glob";
 import * as path from "path";
-import { ConsoleType } from ".";
+import { ConsoleType } from "./index";
 
 /**
  *  @summary
@@ -39,3 +40,11 @@ export const isChildInParent = (parent: string, child: string): boolean => {
     relative == "" || [".", "./", "../"].some((x) => relative.startsWith(x))
   );
 };
+
+export const symlink = TE.taskify<
+  _fs.PathLike,
+  _fs.PathLike,
+  _fs.symlink.Type | undefined | null,
+  NodeJS.ErrnoException,
+  void
+>(_fs.symlink);
