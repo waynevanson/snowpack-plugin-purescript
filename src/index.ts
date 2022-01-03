@@ -210,7 +210,6 @@ export const purescriptPlugin: SnowpackPluginFactory<PurescriptPluginOptions> =
               })
             )
           ),
-          TE.chainFirstIOK(Console.log),
           TE.chainFirstW(({ symlinks }) =>
             pipe(
               symlinks,
