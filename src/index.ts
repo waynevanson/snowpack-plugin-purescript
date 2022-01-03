@@ -23,8 +23,9 @@ import { deferred, DeferredDeps, deps, SpagoDeps } from "./spago";
 import { isChildInParent, symlink } from "./utils";
 
 export interface PurescriptPluginOptions {
-  /** Path to spago project directory,
-   *  which should contain a `spago.dhall` file.
+  /**
+   * Path to spago project directory,
+   * which should contain a `spago.dhall` file.
    */
   spagoProjectDir: string;
 }
