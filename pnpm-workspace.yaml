@@ -1,0 +1,4 @@
+packages:
+  - packages/fp-ts-snowpack
+  - packages/snowpack-plugin-purescript
+  - packages/tests/*

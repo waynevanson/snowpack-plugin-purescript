@@ -28,6 +28,7 @@ export interface PurescriptPluginOptions {
    * which should contain a `spago.dhall` file.
    */
   spagoProjectDir: string;
+  sourceMaps: boolean;
 }
 
 export interface SnowpackPurescriptPluginOptions {
@@ -142,7 +143,10 @@ export function toSymlinks({
 }
 
 export const purescriptPlugin: SnowpackPluginFactory<PurescriptPluginOptions> =
-  (snowpackConfig, pluginConfiguration = { spagoProjectDir: "./" }) => {
+  (
+    snowpackConfig,
+    pluginConfiguration = { spagoProjectDir: "./", sourceMaps: false }
+  ) => {
     // these will be used for multiple files, so we're basically caching them into memory (how cool!)
 
     const config: SnowpackPurescriptPluginOptions = {

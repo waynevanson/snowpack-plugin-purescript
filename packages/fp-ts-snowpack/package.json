@@ -1,0 +1,15 @@
+{
+  "name": "fp-ts-snowpack",
+  "dependencies": {
+    "fp-ts": "^2.11.5",
+    "fp-ts-contrib": "^0.1.26",
+    "io-ts": "^2.2.16",
+    "monocle-ts": "^2.3.11",
+    "newtype-ts": "^0.3.4"
+  },
+  "devDependencies": {
+    "fp-ts-rxjs": "^0.6.15",
+    "rxjs": "6",
+    "snowpack": "^3.8.8"
+  }
+}

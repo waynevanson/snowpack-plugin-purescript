@@ -133,8 +133,12 @@ Just kidding, here are some of the details:
 - Symlinks the source directory structure and symbolically links it to the correct **module** (ie. `module Control.Monad where ...` module is `Control.Monad`) during build.
 - `spago` is called once during plugin initialization, then in batches at minimum every 2 seconds when a purescript file changes (last bit todo)
 
-## 1.0 Roadmap
+### During Development
 
-- [x] Dev (Watching)
-- [ ] Build
-- [ ] Bundling
+- `spago build --watch` is being used to watch for file changes.
+- The `<spago-project>/output` folder is mounted to `/snowpack_plugin_purescript/output`.
+- The input file is
+
+### During Building
+
+- `spago bundle-module` is used to create the final bundle.
