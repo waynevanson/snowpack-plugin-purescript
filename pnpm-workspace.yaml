@@ -1,4 +1,4 @@
 packages:
-  - packages/fp-ts-snowpack
-  - packages/snowpack-plugin-purescript
+  - packages/*
+  - "!packages/tests/"
   - packages/tests/*

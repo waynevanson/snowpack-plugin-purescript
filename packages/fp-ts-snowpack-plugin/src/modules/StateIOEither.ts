@@ -54,11 +54,3 @@ export const FromEither: FromEither3<URI> = {
 };
 
 export const { fromEither } = FromEither;
-
-export const Pointed: Pointed3<URI> = {};
-
-export const Functor: Functor3<URI> = {};
-
-export const Applicative: Applicative3<URI> = {};
-
-export const Chain: Chain3<URI> = {};
