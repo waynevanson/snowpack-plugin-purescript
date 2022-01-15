@@ -1,6 +1,9 @@
 import { commandSync } from "execa";
-import path = require("path/posix");
 
 export default async function () {
-  commandSync("pnpm tsc");
+  console.log("\nbuilding plugin");
+  commandSync("pnpm build");
+
+  console.log("plugin complete, installing into test fixtures");
+  commandSync("pnpm i");
 }

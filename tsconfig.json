@@ -5,6 +5,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,
-    "incremental": true
-  }
+    "incremental": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "include": ["src", "tests/*"]
 }

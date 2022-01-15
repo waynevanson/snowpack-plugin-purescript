@@ -2,6 +2,10 @@ lockfileVersion: 5.3
 
 specifiers:
   snowpack: ^3.8.8
+  snowpack-plugin-purescript: link:../../..
+
+dependencies:
+  snowpack-plugin-purescript: link:../../..
 
 devDependencies:
   snowpack: 3.8.8

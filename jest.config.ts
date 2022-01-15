@@ -1,6 +1,7 @@
 import type { Config } from "@jest/types";
 
-const config: Config.InitialProjectOptions = {
+const config: Config.InitialOptions = {
+  preset: "ts-jest",
   globalSetup: "./jestSetup.ts",
 };
 

@@ -24,7 +24,8 @@ const plugin: SnowpackPluginFactory<Config> = (
 
   const sources = commandSync("spago sources", { cwd })
     .stdout.split("\n")
-    .flatMap((pattern) => glob(pattern, { cwd }));
+    .flatMap((pattern) => glob(pattern, { cwd }))
+    .map((rel) => path.join(cwd, rel));
 
   const srcSources = sources.filter(
     (filePath) => !filePath.startsWith(".spago")
@@ -66,7 +67,7 @@ const plugin: SnowpackPluginFactory<Config> = (
         );
 
         reader.on("line", (line) => {
-          const value = line.match(regexpPursModule)?.at(0);
+          const value = (line.match(regexpPursModule) || [])[0];
           if (!value) return;
           reader.close();
           resolve(value);

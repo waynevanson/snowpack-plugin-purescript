@@ -8,7 +8,8 @@
   "author": "Wayne Van Son <waynevanson@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
