@@ -7,17 +7,17 @@ import { SnowpackPluginFactory } from "snowpack";
 import * as fs from "fs/promises";
 
 export interface Config {
-  output?: string;
+  // output?: string;
   mount?: string;
   projectDirectory?: string;
 }
 
 const plugin: SnowpackPluginFactory<Config> = (
   snowpackConfig,
-  { output = "output", projectDirectory = ".", mount = "/__purescript" } = {}
+  { projectDirectory = ".", mount = "__purescript" } = {}
 ) => {
   const cwd = path.join(snowpackConfig.root, projectDirectory);
-  const outputPath = path.join(cwd, output);
+  const outputPath = path.join(cwd, "output");
   const sourcemaps = snowpackConfig.buildOptions.sourcemap !== false;
 
   commandSync(`spago build ${sourcemaps ? "--source-maps" : ""}`, { cwd });
