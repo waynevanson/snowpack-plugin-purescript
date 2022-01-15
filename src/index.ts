@@ -6,11 +6,19 @@ import * as readline from "readline";
 import { SnowpackPluginFactory } from "snowpack";
 import * as fs from "fs/promises";
 
+// /((import|require)\s*\((\"|\'))(.*)(\"|\')\)/gm
+
 export interface Config {
   // output?: string;
   mount?: string;
   projectDirectory?: string;
 }
+
+// /(?<=import(?:\s|.)*from\s*(?:\"|\'))(.*)(?=\"|\')/gm
+export const regexpJsModule =
+  /(?<=(?:(?:import|require)\(|(?:import(?:\s|.)*from))\s*(?:\"|\'))(.*)(?=\"|\')/gm;
+
+export const replacerJsModule = (substring: string) => substring;
 
 const plugin: SnowpackPluginFactory<Config> = (
   snowpackConfig,
@@ -80,7 +88,6 @@ const plugin: SnowpackPluginFactory<Config> = (
         path.join(outputPath, pursModuleName, "index.js"),
         { encoding: "utf-8" }
       );
-
 
       const regexpJsModules = [] as RegExp[];
 

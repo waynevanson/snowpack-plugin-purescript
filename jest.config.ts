@@ -3,7 +3,6 @@ import { defaults as tsjest } from "ts-jest/presets";
 
 const config: Config.InitialOptions = {
   preset: "ts-jest",
-  globalSetup: "./jestSetup.ts",
   projects: [
     {
       ...tsjest,
@@ -14,6 +13,7 @@ const config: Config.InitialOptions = {
       ...tsjest,
       displayName: "e2e",
       testMatch: ["<rootDir>/tests/e2e/*", ...(tsjest.testMatch || [])],
+      globalSetup: "./jestSetup.ts",
     },
   ],
 };
