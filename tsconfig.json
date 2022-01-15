@@ -9,6 +9,5 @@
     "outDir": "dist",
     "skipLibCheck": true,
     "esModuleInterop": true
-  },
-  "include": ["src", "tests/*"]
+  }
 }

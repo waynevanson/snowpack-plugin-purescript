@@ -81,7 +81,21 @@ const plugin: SnowpackPluginFactory<Config> = (
         { encoding: "utf-8" }
       );
 
-      const regexpJsModule = /(?=)/g;
+
+      const regexpJsModules = [] as RegExp[];
+
+      // bro what is this going to be?
+      // ../Main.Effect/index.js -> '<up-to-spago-project-dir>/<output>/Main.Effect/index.js'
+      // I think i need to mount this to __purescript TOO
+
+      regexpJsModules.forEach((regexpJsModule) =>
+        code.replace(regexpJsModule, (substring) =>
+          path.join(
+            path.relative(filePath, outputPath),
+            path.basename(substring)
+          )
+        )
+      );
 
       const map = sourcemaps
         ? await fs.readFile(
