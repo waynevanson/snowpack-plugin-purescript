@@ -92,9 +92,7 @@ const plugin: SnowpackPluginFactory<Config> = (
           )
         : undefined;
 
-      return {
-        ".js": { code, map },
-      };
+      return { ".js": { code, map } };
     },
   };
 };
